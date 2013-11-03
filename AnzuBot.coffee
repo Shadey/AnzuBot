@@ -14,7 +14,7 @@ log = (message) ->
 client = new irc.Client(bot.server,bot.nickName,{
 	userName: bot.userName,
 	realName: bot.realName,
-	channels: [bot.channel]
+	channels: bot.channel
 	})
 
 client.addListener("message", (nick,channel,message) ->
