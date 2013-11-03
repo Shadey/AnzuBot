@@ -29,7 +29,7 @@ client.addListener("message", (nick,channel,message) ->
 	if command is true
 		cmd = message.slice(1).toLowerCase()
 		switch cmd
-			when "verision" then client.say(channel,"This is verision 0.0.1 of AnzuBot")
+			when "verision" then client.say(channel,"This is verision 0.1.0 of AnzuBot")
 			else
 				log(message)
 	else if admincommand is true
