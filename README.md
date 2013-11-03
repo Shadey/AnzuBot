@@ -9,3 +9,13 @@ Features
 2. Easy Modules
 3. Admin Commands
 4. Titles for posted webpages
+
+Install
+===========
+```bash
+ git clone https://github.com/Shadey/AnzuBot.git && cd AnzuBot
+ npm install
+```
+Run
+===
+` coffee AnzuBot.coffee `
