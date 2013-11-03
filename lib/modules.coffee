@@ -1,3 +1,8 @@
+###
+Module setup
+exports.somefeature = (client,channel,message) ->
+	do stuff here
+###
 cheerio = require("cheerio")
 request  = require("request")
 exports.title = (client,channel,message) ->

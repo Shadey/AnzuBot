@@ -1,9 +1,9 @@
 fs = require("fs")
 irc = require("irc")
-cheerio = require("cheerio")
-request  = require("request")
+#Reads the config file
 bot = JSON.parse(fs.readFileSync("config.js","utf8"))
 mods = require("./lib/modules")
+#Logs the chat by Date
 log = (message) ->
 	date = new Date()
 	console.log("#{date} : #{message}")
@@ -11,15 +11,11 @@ log = (message) ->
 		console.log(err) if err
 		)
 
-
 client = new irc.Client(bot.server,bot.nickName,{
 	userName: bot.userName,
 	realName: bot.realName,
 	channels: [bot.channel]
 	})
-
-
-
 
 client.addListener("message", (nick,channel,message) ->
 	command= false
@@ -30,6 +26,7 @@ client.addListener("message", (nick,channel,message) ->
 		cmd = message.slice(1).toLowerCase()
 		switch cmd
 			when "verision" then client.say(channel,"This is verision 0.1.0 of AnzuBot")
+			when "source" then client.say(channel,"Source can be found here: https://github.com/Shadey/AnzuBot")
 			else
 				log(message)
 	else if admincommand is true
