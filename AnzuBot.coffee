@@ -4,10 +4,10 @@ irc = require("irc")
 bot = JSON.parse(fs.readFileSync("config.js","utf8"))
 mods = require("./lib/modules")
 #Logs the chat by Date
-log = (message) ->
+log = (channel,message) ->
 	date = new Date()
 	console.log("#{date} : #{message}")
-	fs.appendFile(bot.logfile,"#{date} : #{message}\n",(err) ->
+	fs.appendFile("#{channel}.txt","#{date} : #{message}\n",(err) ->
 		console.log(err) if err
 		)
 
@@ -25,22 +25,21 @@ client.addListener("message", (nick,channel,message) ->
 	if command is true
 		cmd = message.slice(1).toLowerCase()
 		switch cmd
-			when "verision" then client.say(channel,"This is verision 0.1.0 of AnzuBot")
+			when "version" then client.say(channel,"This is version 0.1.0 of AnzuBot")
 			when "source" then client.say(channel,"Source can be found here: https://github.com/Shadey/AnzuBot")
 			else
-				log(message)
+				log(channel,message)
 	else if admincommand is true
 		cmd = message.slice(1).toLowerCase()
 		switch cmd
 			when "quit" 
 				fs.appendFile(bot.logfile,"--------------------\n") 
 				client.disconnect("Bye guys")
-
 			else
-				log(message)
+				log(channel,message)
 	else
 		mods.title(client,channel,message)
-		log("#{nick} => #{message}")
+		log(channel,"#{nick} => #{message}")
 
 	)
 client.addListener("registered", () ->
