@@ -1,0 +1,14 @@
+{
+  "name": "AzzuBot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "coffee Anzubot.coffee"
+  },
+  "dependencies": {
+    "request" : "*",
+    "cheerio" : "0.12.3",
+    "irc" : "*",
+    "coffee-script" : "1.6.3"
+  }
+}
